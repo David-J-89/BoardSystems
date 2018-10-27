@@ -56,5 +56,10 @@ namespace BoardSystems.Controllers
 
             return View();
         }
+
+        public ActionResult MyMessages()
+        {
+            return View();
+        }
     }
 }
