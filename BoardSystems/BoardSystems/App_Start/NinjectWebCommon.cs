@@ -67,6 +67,7 @@ namespace BoardSystems.App_Start
 #else
             kernel.Bind<IMailService>().To<MailService>().InRequestScope();
 #endif
+            kernel.Bind<MessageBoardContext>().To<MessageBoardContext>().InRequestScope(); //you want only one context object because it's heavy. No need to recreate.
             kernel.Bind<IMessageBoardRepository>().To<MessageBoardRepository>().InRequestScope();
         }        
     }

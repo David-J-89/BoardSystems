@@ -7,14 +7,21 @@ namespace BoardSystems.Data
 {
     public class MessageBoardRepository : IMessageBoardRepository //this class implements the IMessageBoardRepository Interface.
     {
-        public IQueryable<Reply> GetRepliesByTopic(int topicId)
+        MessageBoardContext _ctx;
+        public MessageBoardRepository(MessageBoardContext ctx)
         {
-            throw new NotImplementedException();
+            _ctx = new MessageBoardContext();
         }
-
         public IQueryable<Topic> GetTopics()
         {
+                
+            return _ctx.Topics;
+        }
+
+        public IQueryable<Reply> GetRepliesByTopic(int topidId)
+        {
             throw new NotImplementedException();
         }
+        
     }
 }
