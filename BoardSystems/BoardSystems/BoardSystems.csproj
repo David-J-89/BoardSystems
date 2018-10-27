@@ -224,6 +224,12 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Site.css">
+      <DependentUpon>Site.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.min.css">
+      <DependentUpon>Site.css</DependentUpon>
+    </Content>
     <Content Include="Content\Template\font-awesome\fontawesome-webfont.svg" />
     <Content Include="Content\Template\img\arrow-down.png" />
     <Content Include="Content\Template\img\arrow-right.png" />
@@ -325,6 +331,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <None Include="bundleconfig.json" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="Content\Site.less" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="ApplicationInsights.config">

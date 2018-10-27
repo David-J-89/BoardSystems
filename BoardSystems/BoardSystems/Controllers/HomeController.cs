@@ -57,9 +57,11 @@ namespace BoardSystems.Controllers
             return View();
         }
 
-        public ActionResult MyMessages()
+        [Authorize(Roles ="Admin")]
+        public ActionResult MyMessages() 
         {
-            return View();
+            return View(); 
         }
+        
     }
 }
