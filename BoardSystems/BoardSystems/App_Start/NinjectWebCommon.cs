@@ -5,6 +5,7 @@ namespace BoardSystems.App_Start
 {
     using System;
     using System.Web;
+    using BoardSystems.Data;
     using BoardSystems.Services;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
@@ -66,6 +67,7 @@ namespace BoardSystems.App_Start
 #else
             kernel.Bind<IMailService>().To<MailService>().InRequestScope();
 #endif
+            kernel.Bind<IMessageBoardRepository>().To<MessageBoardRepository>().InRequestScope();
         }        
     }
 }
