@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BoardSystems.Data
 {
-    interface IMessageBoardRepository
+    public interface IMessageBoardRepository
     {
        IQueryable<Topic> GetTopics();
        IQueryable<Reply> GetRepliesByTopic(int topicId);

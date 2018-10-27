@@ -66,7 +66,7 @@ namespace BoardSystems.App_Start
             kernel.Bind<IMailService>().To<MockMailService>().InRequestScope();
 #else
             kernel.Bind<IMailService>().To<MailService>().InRequestScope();
-#endif
+#endif      //allowing for depency injections
             kernel.Bind<MessageBoardContext>().To<MessageBoardContext>().InRequestScope(); //you want only one context object because it's heavy. No need to recreate.
             kernel.Bind<IMessageBoardRepository>().To<MessageBoardRepository>().InRequestScope();
         }        

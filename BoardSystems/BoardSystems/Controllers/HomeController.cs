@@ -1,4 +1,5 @@
-﻿using BoardSystems.Services;
+﻿using BoardSystems.Data;
+using BoardSystems.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +11,22 @@ namespace BoardSystems.Controllers
     public class HomeController : Controller
     {
         private IMailService _mail;
+        private IMessageBoardRepository _repo;
 
-        public HomeController(IMailService mail)
+        public HomeController(IMailService mail, IMessageBoardRepository repo)
         {
             _mail = mail;
+            _repo = repo;
         }
         
         public ActionResult Index()
         {
-            return View();
+            var topics = _repo.GetTopics()
+                .OrderByDescending(t => t.Created)
+                .Take(25)
+                .ToList();
+
+            return View(topics);
         }
 
         public ActionResult About()

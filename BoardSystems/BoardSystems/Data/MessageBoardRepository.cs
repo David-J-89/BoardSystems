@@ -18,9 +18,9 @@ namespace BoardSystems.Data
             return _ctx.Topics;
         }
 
-        public IQueryable<Reply> GetRepliesByTopic(int topidId)
+        public IQueryable<Reply> GetRepliesByTopic(int topicId)
         {
-            throw new NotImplementedException();
+            return _ctx.Replies.Where(r => r.TopicId == topicId);
         }
         
     }
