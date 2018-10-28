@@ -213,6 +213,11 @@
     <Compile Include="Data\MessageBoardRepository.cs" />
     <Compile Include="Data\Reply.cs" />
     <Compile Include="Data\Topic.cs" />
+    <Compile Include="Migrations\201810272316414_Init.cs" />
+    <Compile Include="Migrations\201810272316414_Init.Designer.cs">
+      <DependentUpon>201810272316414_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -416,6 +421,11 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201810272316414_Init.resx">
+      <DependentUpon>201810272316414_Init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

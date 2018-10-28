@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<BoardSystems.Data.Topic>
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -110,6 +111,10 @@
   </div>
 </div>
 
-
+@foreach (var topic in Model)
+{
+    <div>@topic.Title</div>
+    <div>@topic.Body</div>
+}
 
 
