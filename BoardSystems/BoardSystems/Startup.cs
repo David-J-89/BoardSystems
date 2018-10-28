@@ -1,7 +1,11 @@
-﻿using Microsoft.Owin;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(BoardSystems.Startup))]
+[assembly: OwinStartup(typeof(BoardSystems.Startup))]
+
 namespace BoardSystems
 {
     public partial class Startup
