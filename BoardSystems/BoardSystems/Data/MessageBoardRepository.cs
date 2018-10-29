@@ -49,5 +49,24 @@ namespace BoardSystems.Data
                 return false;
             }
         }
+
+        public IQueryable<Topic> GetTopicsIncludingReplies()
+        {
+            return _ctx.Topics.Include("Replies");
+        }
+
+        public bool AddReply(Reply newReply)
+        {
+            try
+            {
+                _ctx.Replies.Add(newReply);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                //TODO log this error
+                return false;
+            }
+        }
     }
 }

@@ -16,10 +16,19 @@ namespace BoardSystems.Controllers
             _repo = repo;
         }
 
-        public IEnumerable<Topic> Get()
+        public IEnumerable<Topic> Get(bool includeReplies = false)
         {
-            var topics = _repo.GetTopics()
-                .OrderByDescending(t => t.Created)
+            IQueryable<Topic> results;
+
+            if (includeReplies == true)
+            {
+                results = _repo.GetTopicsIncludingReplies();
+            }
+            else
+            {
+                results = _repo.GetTopics();
+            }
+            var topics = results.OrderByDescending(t => t.Created)
                 .Take(25)
                 .ToList();
 
@@ -28,6 +37,13 @@ namespace BoardSystems.Controllers
 
         public HttpResponseMessage Post([FromBody]Topic newTopic) //body method being injected with parameter into webapi method
         {
+
+            if(newTopic.Created == default(DateTime))
+            {
+                newTopic.Created = DateTime.UtcNow;
+            }
+
+
             if (_repo.AddTopic(newTopic) &&
             _repo.Save())
             {
