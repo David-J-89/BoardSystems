@@ -5,27 +5,30 @@ namespace BoardSystems.App_Start
 {
     using System;
     using System.Web;
+    using System.Web.Http;
     using BoardSystems.Data;
     using BoardSystems.Services;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
     using Ninject.Web.Common;
+    using Ninject.Web.Common.WebHost;
+    using WebApiContrib.IoC.Ninject;
 
-    public static class NinjectWebCommon
+    public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
         /// </summary>
-        public static void Start()
+        public static void Start() 
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
         }
-
+        
         /// <summary>
         /// Stops the application.
         /// </summary>
@@ -33,7 +36,7 @@ namespace BoardSystems.App_Start
         {
             bootstrapper.ShutDown();
         }
-
+        
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
@@ -41,19 +44,19 @@ namespace BoardSystems.App_Start
         private static IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
-            try
-            {
+            
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);
-                return kernel;
-            }
-            catch
-            {
-                kernel.Dispose();
-                throw;
-            }
+
+
+            GlobalConfiguration.Configuration.DependencyResolver =
+                new NinjectResolver(kernel);
+
+              return kernel;
+            
+           
         }
 
         /// <summary>
@@ -69,6 +72,6 @@ namespace BoardSystems.App_Start
 #endif      //allowing for depency injections
             kernel.Bind<MessageBoardContext>().To<MessageBoardContext>().InRequestScope(); //you want only one context object because it's heavy. No need to recreate.
             kernel.Bind<IMessageBoardRepository>().To<MessageBoardRepository>().InRequestScope();
-        }
+        }        
     }
 }

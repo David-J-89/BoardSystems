@@ -13,7 +13,7 @@ namespace BoardSystems.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201810280339298_Init01"; }
+            get { return "201810291538239_Init01"; }
         }
         
         string IMigrationMetadata.Source
