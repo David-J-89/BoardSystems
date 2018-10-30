@@ -1,17 +1,17 @@
 /* Blue Color */
 
 a, a:visited{
-color:#0072c6;
+color:#000;
 text-decoration:none;
 }
 
 a:hover{
-color:#0072c6;
+color:#000;
 text-decoration:underline;
 }
 
 .fixedbar{
-background:#0072c6;
+background:#000;
 }
 
 .ddsubmenustyle, .ddsubmenustyle div{
@@ -19,7 +19,7 @@ border:1px solid #0060a6 !important;
 }
 
 .ddsubmenustyle li a{
-background:#0072c6 !important;
+background:#000 !important;
 border-bottom:1px solid #0060a6 !important;
 }
 
@@ -28,11 +28,11 @@ background:#0060a6 !important;
 }
 
 .mattblackmenu ul{
-background:#0072c6 !important;
+background:#000 !important;
 }
 
 .mattblackmenu li a{
-background:#0072c6 !important;
+background:#000 !important;
 }
 
 .mattblackmenu li a:hover{
@@ -44,21 +44,21 @@ background:url('../img/quote-blue.png') top left no-repeat;
 }
 
 .posts h2{
-background:#0072c6;
+background:#000;
 }
 
 .features h4{
-color:#0072c6;
+color:#000;
 }
 
 .foot{
-background:#0072c6;
+background:#000;
 }
 
 .foot a, .foot a:visited{
-color:#c2e5ff;
+color:#000;
 }
 
 .foot a:hover{
-color:#c2e5ff;
+color:#000;
 }
