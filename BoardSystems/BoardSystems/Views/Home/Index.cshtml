@@ -10,7 +10,11 @@
     <div class="message-header">
         <h1>BoardSystems Messenger</h1>
         <p class="lead">Latest Messages...</p>
-        <div>Message Count: {{ dataCount }}</div>
+        <div>Message Count: {{ data.length }}</div>
+    </div>
+
+    <div class="progress progress-striped active" data-ng-show="isBusy">
+        <div class="bar" style="width: 100%;"></div>
     </div>
 
     <div class="messages">
@@ -19,7 +23,7 @@
                 {{ i.title }}
             </div>
             <div class="date span2">
-                {{ i.created }}
+                {{ i.created | date:"medium" }}
             </div>
             <div class="contents span12">
                 {{ i.body }}
@@ -28,30 +32,16 @@
                 <button class="btn btn-primary reply-button">Reply</button>
             </div>
             <div class="replies span12">
-                <div class="reply">
+                <div class="reply" data-ng-repeat="r in i.replies">
                     <div class="created pull-right">
-                        Feb 28, 2013
+                        {{ r.created | date:"medium" }}
                     </div>
-                    <div class="content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.
+                    <div class="content"> 
+                        {{ r.body }}
                     </div>
-                </div>
-                <div class="reply">
-                    <div class="created pull-right">
-                        Feb 28, 2013
-                    </div>
-                    <div class="content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.
-                    </div>
-                </div>
-                <div class="reply">
-                    <div class="created pull-right">
-                        Feb 28, 2013
-                    </div>
-                    <div class="content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.
-                    </div>
-                </div>
+                </div>                
+               
+                
             </div>
         </div>       
         
